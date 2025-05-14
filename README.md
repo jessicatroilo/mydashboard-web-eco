@@ -46,6 +46,7 @@ Version 1.0 :
 │   └── index.html
 ├── static/
 │   └── (on y mettra Tailwind plus tard)
+├── rss_cache.json
 ├── rss_sources.py
 ├── requirements.txt
 ````
