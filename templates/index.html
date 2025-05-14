@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Web-Éco</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- ajout du favicon -->
+    <link rel="icon" href="https://www.web-eco.fr/favicon.ico" type="image/x-icon">
+</head>
+<body class="bg-green-50 text-gray-800 p-6">
+
+    <header class="mb-6">
+        <h1 class="text-4xl font-bold text-center">Dashboard Web-Éco</h1>
+        <p class="text-center text-gray-600">Suivez les dernières actualités du secteur Web-Éco</p>
+    </header>
+    
+    <main>
+    <h2 class="text-3xl font-bold mb-4">🌱 Dernières actus Web-Eco</h2>
+    <ul class="space-y-3">
+      {% for article in articles %}
+      <li class="bg-white p-4 shadow rounded border-l-4 {{ article.color }} ">
+          <a href="{{ article.link }}" target="_blank" class="text-blue-600 hover:underline font-semibold">
+              {{ article.title }}
+          </a>
+          <div class="text-sm text-gray-500 flex justify-between">
+              <!-- <span>{{ article.published }}</span> -->
+              <span class="italic">{{ article.icon }}{{ article.source }}</span>
+          </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+</body>
