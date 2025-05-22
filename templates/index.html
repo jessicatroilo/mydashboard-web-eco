@@ -2,32 +2,64 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Web-Éco</title>
+
+    <!-- CSS, Tailwind-->
+    
+    <link rel="stylesheet" href="static/style.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- ajout du favicon -->
     <link rel="icon" href="https://www.web-eco.fr/favicon.ico" type="image/x-icon">
 </head>
-<body class="bg-green-50 text-gray-800 p-6">
+<body class="bg-white text-gray-800 p-6">
 
-    <header class="mb-6">
-        <h1 class="text-4xl font-bold text-center">Dashboard Web-Éco</h1>
-        <p class="text-center text-gray-600">Suivez les dernières actualités du secteur Web-Éco</p>
+    <header class="mb-2">
+        <h1 class="text-xl font-bold">dashboard web-éco</h1>
     </header>
     
     <main>
-    <h2 class="text-3xl font-bold mb-4">🌱 Dernières actus Web-Eco</h2>
-    <ul class="space-y-3">
-      {% for article in articles %}
-      <li class="bg-white p-4 shadow rounded border-l-4 {{ article.color }} ">
-          <a href="{{ article.link }}" target="_blank" class="text-blue-600 hover:underline font-semibold">
-              {{ article.title }}
-          </a>
-          <div class="text-sm text-gray-500 flex justify-between">
-              <!-- <span>{{ article.published }}</span> -->
-              <span class="italic">{{ article.icon }}{{ article.source }}</span>
-          </div>
-      </li>
-      {% endfor %}
-    </ul>
-  </main>
+        <!-- Présentation + date + météo -->
+        <section>
+            <div class="flex flex-col lg:flex-row justify-center items-center gap-2">
+                <div class="rounded-lg bg-gradient-to-r from-green-300 to-blue-500 p-5 text-white my-2">
+                    <h2 class="font-bold font-title">Hello, <span class="font-script"> Jessica </span> !</h2>
+                    <p class="text-xl mb-4">Bienvenue dans ton petit coin du web où l’écologie numérique rencontre l’actualité fraîche du jour… sans pression, juste des bonnes vibes et un soupçon de veille intelligente. </p>
+                </div>
+                <aside class="rounded-lg bg-gradient-to-r from-pink-200 to-blue-400 p-5 text-white">
+                    <p class="text-2xl my-2"> <i class="fa-regular fa-calendar"></i> {{ current_date }}</p>
+                    <p class="text-2xl my-2"> <i class="fa-solid fa-cloud"></i> 25 °C, nuageux</p> <!-- TODO Mettre l'API-->
+                </aside>  
+            </div>
+        </section>
+
+        <!-- Stats-->
+        <section class="my-6">
+            <h2 class="text-3xl font-bold mb-4">📊 statistiques</h2>
+            <div class="flex flex-col lg:flex-row justify-center items-center rounded-lg bg-gradient-to-r from-blue-200 to-blue-400 ">
+                <p class="py-24">Ici un graph - des données </p>
+            </div>
+        </section>
+
+        <!-- Articles-->
+        <section class="my-6">
+            <h2 class="text-3xl font-bold mb-4">🌱 dernières actus web-éco</h2>
+            <ul class="space-y-3">
+            {% for article in articles %}
+            <li class="bg-stone-300 p-4 shadow rounded border-l-4 {{ article.color }} ">
+                <a href="{{ article.link }}" target="_blank" class="text-blue-600 hover:underline font-semibold">
+                    {{ article.title }}
+                </a>
+                <div class="text-sm text-gray-500 flex justify-between">
+                    <!-- <span>{{ article.published }}</span> -->
+                    <span class="italic">{{ article.icon }}{{ article.source }}</span>
+                </div>
+            </li>
+            {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+<!-- SCRIPT -->
+    <script src="https://kit.fontawesome.com/275e06ef04.js" crossorigin="anonymous"></script>
 </body>

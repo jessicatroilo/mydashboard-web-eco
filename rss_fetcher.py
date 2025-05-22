@@ -3,6 +3,8 @@ import json
 import os
 import locale
 
+
+
 from datetime import datetime, timedelta
 
 # Configuration de la locale pour le formatage des dates en français
@@ -11,6 +13,8 @@ locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
 CACHE_FILE = "rss_cache.json"
 CACHE_DURATION_MINUTES = 10
+
+
 
 def is_cache_valid():
     if not os.path.exists(CACHE_FILE):
@@ -54,6 +58,7 @@ def get_articles():
             articles.append({
                 "title": entry.title,
                 "link": entry.link,
+                "image": entry.image if hasattr(entry, 'image') else None,
                 "summary": entry.summary,
                 "published": entry.published if hasattr(entry, 'published') else entry.updated,
                 "published_parsed": entry.published_parsed if hasattr(entry, 'published_parsed') else entry.updated_parsed,
